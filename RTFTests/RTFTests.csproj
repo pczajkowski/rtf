@@ -17,10 +17,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="testFiles\trackedEnabled.txt">
+      <None Update="testFiles\trackedEnabled.rtf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="testFiles\trackedDisabled.txt">
+      <None Update="testFiles\trackedDisabled.rtf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

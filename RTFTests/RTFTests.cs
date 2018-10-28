@@ -59,8 +59,8 @@ namespace RTFTests
         [Fact]
         public void TestEnableTrackedChanges()
         {
-            const string testFile = @"testFiles/trackedDisabled.txt";
-            const string expectedFile = @"testFiles/trackedEnabled.txt";
+            const string testFile = @"testFiles/trackedDisabled.rtf";
+            const string expectedFile = @"testFiles/trackedEnabled.rtf";
 
             RTF.RTF.EnableTrackedChanges(testFile);
             Assert.True(FileCompare(expectedFile, testFile));

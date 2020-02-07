@@ -28,27 +28,27 @@ namespace RTF
             if (string.IsNullOrEmpty(path))
                 return false;
 
-            bool check = true;
+            var check = true;
 
-            string workingDirectory = Path.GetDirectoryName(path);
+            var workingDirectory = Path.GetDirectoryName(path);
             if (string.IsNullOrEmpty(workingDirectory))
                 return false;
 
-            string tempFile = Path.Combine(workingDirectory, "tempFile");
+            var tempFile = Path.Combine(workingDirectory, "tempFile");
 
-            using (StreamReader sr = File.OpenText(path))
-            using (StreamWriter sw = new StreamWriter(tempFile))
+            using (var sr = File.OpenText(path))
+            using (var sw = new StreamWriter(tempFile))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
                     if (check)
                     {
-                        var result = AddRevisions(line);
-                        if (result.changed && !string.IsNullOrEmpty(result.line))
+                        var (changed, newLine) = AddRevisions(line);
+                        if (changed && !string.IsNullOrEmpty(newLine))
                         {
                             check = false;
-                            line = result.line;
+                            line = newLine;
                         }
                     }                  
 

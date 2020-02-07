@@ -23,16 +23,17 @@ namespace RTF
         /// Enables Tracked Changes for given RTF file.
         /// </summary>
         /// <param name="path"></param>
-        public static void EnableTrackedChanges(string path)
+        public static bool EnableTrackedChanges(string path)
         {
             if (string.IsNullOrEmpty(path))
-                return;
+                return false;
 
             bool check = true;
 
             string workingDirectory = Path.GetDirectoryName(path);
             if (string.IsNullOrEmpty(workingDirectory))
-                return;
+                return false;
+
             string tempFile = Path.Combine(workingDirectory, "tempFile");
 
             using (StreamReader sr = File.OpenText(path))
@@ -57,6 +58,8 @@ namespace RTF
 
             File.Delete(path);
             File.Move(tempFile, path);
+
+            return true;
         }
     }
 }
